@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from typing import Callable, Dict, Optional, Union
 
+from django.core.validators import URLValidator
 from hamcrest import has_entries  # type: ignore
 from hamcrest import (
     all_of,
@@ -39,6 +40,11 @@ def is_regex(regex: str, nullable=False) -> Callable[[Optional[str]], bool]:
 def is_date(nullable: bool = False) -> Callable[[Optional[str]], bool]:
     """Return a function to check whether the string is ISO8601 formatted."""
     return is_regex(ISODATE_REGEX, nullable)
+
+
+def is_url(nullable: bool = False) -> Callable[[Optional[str]], bool]:
+    """Return a function to check whether the string is a URL."""
+    return is_regex(URLValidator.regex.pattern, nullable)
 
 
 def is_uuid(nullable: bool = False) -> Callable[[Optional[str]], bool]:

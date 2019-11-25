@@ -1,4 +1,6 @@
 """Settings for your application."""
+import sys
+
 from datetime import timedelta
 from typing import Any, Dict, List, Optional, Tuple, Type
 from urllib.parse import urlparse
@@ -72,6 +74,7 @@ INSTALLED_APPS = [
     # Project apps
     "webapp",
     "users",
+    "media",
     # Our defaults
     "corsheaders",
     "anymail",
@@ -295,6 +298,10 @@ if DEBUG:
 
     # CORS
     CORS_ORIGIN_WHITELIST = [item for item in ALLOWED_HOSTS if item != "*"]
+
+    # Check if celery is available (for tests, etc.)
+    if "test" in sys.argv:
+        CELERY_TASK_ALWAYS_EAGER = True
 
 # Post debug setup dependant settings
 CSRF_TRUSTED_ORIGINS = CORS_ORIGIN_WHITELIST

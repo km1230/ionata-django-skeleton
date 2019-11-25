@@ -6,6 +6,7 @@ from rest_framework.routers import DefaultRouter  # type: ignore
 from rest_framework.viewsets import ViewSetMixin  # type: ignore
 
 from users import views as user_views  # type: ignore
+from webapp.routes import routes as api_routes
 
 # Add viewsets here. The first argument is the name and the URL regex
 routes: List[Tuple[str, ViewSetMixin]] = [
@@ -13,6 +14,7 @@ routes: List[Tuple[str, ViewSetMixin]] = [
     ("sessions", user_views.SessionView),
     ("password-resets", user_views.PasswordResetView),
     ("password-reset-confirmations", user_views.PasswordResetConfirmView),
+    *api_routes,
 ]
 
 v1_router = DefaultRouter()

@@ -29,6 +29,7 @@ gunicorn = "^19.9"
 psycopg2 = "^2.8"
 python-dateutil = "^2.8"
 pytz = "*"
+pillow = "^6.2.1"
 
 [tool.poetry.dev-dependencies]
 # debugging

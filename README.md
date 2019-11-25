@@ -7,6 +7,7 @@
 * Address any `TODO`s in `src/webapp/settings.py`
 * Address any `TODO`s in `example.env`
 * Address any `TODO`s in `pyproject.toml`
+* Remove the media app if you do not need content upload/management
 
 
 ## Base Django project
